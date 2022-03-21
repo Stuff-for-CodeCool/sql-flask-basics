@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form action="{{ url_for('edit_question', id=question.id) }}" method="post">
+
+<div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" id="title" name="title" class="form-control" value="{{ question.title }}">
+</div>
+
+<div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <textarea id="message" name="message" class="form-control">{{ question.message }}</textarea>
+</div>
+
+<div class="mb-3">
+    <button type="submit" class="btn btn-primary">Edit</button>
+</div>
+
+</form>
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %} {{ question.title }} {% endblock title %}
+
+{% block content %}
+
+<h1>{{ question.title }}</h1>
+
+<p>{{ question.message | safe }}</p>
+
+{% if question.answer %}
+
+    {% for ans in question.answer %}
+<blockquote class="border p-3 mb-3">
+    {{ ans }}
+</blockquote>
+    {% endfor %}
+{% endif %}
+
+<p>
+    <a
+        class="btn btn-info"
+        href="{{ url_for('edit_question_form', id=question.id) }}"
+        >Edit this question</a
+    >
+</p>
+
+<p>
+    <a
+        class="btn btn-danger"
+        href="{{ url_for('delete_question', id=question.id) }}"
+        >Delete this question</a
+    >
+</p>
+
+{% endblock content %}

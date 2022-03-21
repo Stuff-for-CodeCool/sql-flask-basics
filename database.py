@@ -30,6 +30,6 @@ def run_query(statement, vars=None, single=False, debug=False):
                 print(cursor.query.decode("utf-8"))
 
             if single:
-                return cursor.fetchone()
+                return dict(cursor.fetchone())
 
-            return list(cursor.fetchall())
+            return [dict(element) for element in cursor.fetchall()]

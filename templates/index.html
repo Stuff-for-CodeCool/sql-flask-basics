@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+AskMate - latest 5 questions
+{% endblock title %}
+
+{% block content %}
+
+<table class="table table-striped mb-3">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Submitted at</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ url_for('get_question', id=question.id) }}">{{ question.title }}</td>
+                <td>{{ question.submission_time }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p><a class="btn btn-primary" href="{{ url_for('new_question_form') }}">Add new question</a></p>
+
+{% endblock content %}
